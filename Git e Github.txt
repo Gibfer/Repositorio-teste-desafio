@@ -1,0 +1,186 @@
+Git: Criado em 2005 por Linus Torvalds
+
+Git e Github são ferramentas DIFERENTES, mas se relacionam.
+
+Benefícios de aprender Git e Github 
+
+- Controle da Versão
+- Armazenamento em Nuvem
+- Trabalho em equipe
+- Melhorar o código
+- Reconhecimento
+
+O Git hoje possui uma GUI (Graphic User Interface) mas iremos usar a CLI (Command Line Interface)
+
+O que vamos aprender?
+
+- Mudar de pastas
+- Listar as pastas
+- Criar pastas/arquivos
+- Deletar pastas/arquivos
+
+Comandos Windows
+
+- cd (Change Directory, para navegar nas pastas. 
+Use cd + nome da pasta pra entrar na pasta
+Use cd + / para entrar no diretório raiz
+Use cd.. para subir de nível)
+
+- A tecla TAB serve para autocompletar resultados
+
+- cls (Clear Screen, limpa a tela do terminal)
+
+- dir (Listar, saber em que local nós estamos no sistema operacional)
+
+- mkdir (Make Directory, criar pasta)
+
+- echo (exibe uma mensagem na tela)
+
+- echo hello > hello.txt (O SO vai checar se existe um arquivo com esse nome e se não existir, ele o cria) 
+
+- del/rmdir (Deletar arquivo, mas não o repósitorio/pasta | Remove Directory, deleta a pasta | Pode-se Adicionar /S para dizer "sim" para confirmar se quer deletar msm e o /Q para desligar o echo e não receber mensagem de retorno)
+
+Comandos Unix
+
+- cd (Change Directory, para navegar nas pastas. 
+Use cd + nome da pasta pra entrar na pasta
+Use cd + / para entrar no diretório raiz
+Use cd.. para subir de nível)
+
+- clear (limpa a tela do terminal. Pode aprtar CTRL + L)
+
+- ls (Listar, saber em que local nós estamos no sistema operacional)
+
+- mkdir (Make Directory, criar pasta)
+
+- echo (exibe uma mensagem na tela)
+
+- echo hello > hello.txt (O SO vai checar se existe um arquivo com esse nome e se não existir, ele o cria) 
+
+- rm -rf (remove e o -rf significa q o "r" é pra deletar tudo dentro e o "f" para forçar o processo e não aparecer nenhum tipo de confirmação)
+
+
+Entendendo como o Git funciona por baixo dos panos
+
+- SHA 1
+Secure Hash Algorithm (Algoritmo de Hash Seguro), é um conjunto de funções hash criptografadas projetadas pela NSA (Ageência de Segurança NAcional dos EUA)
+A encriptação gera um conjunto de caracteres identificador de 40 dígitos. É uma forma curta de representar um arquivo.
+
+
+- Objetos fundamentais
+- Sistema Distribuído
+- Segurança
+
+1. Objetos Fundamentais
+
+1.1 Blobs
+
+Em git, o conteúdo dos arquivos é armazenado em objetos chamados blobs, objetos binários grandes. A diferença entre blobs e arquivos é que os arquivos também contêm metadados. Por exemplo, um arquivo “lembra” quando foi criado, portanto, se você mover esse arquivo para outro diretório, seu tempo de criação permanecerá o mesmo. Blobs , por outro lado, são apenas conteúdos - fluxos binários de dados. Um blob não registra sua data de criação, seu nome ou nada além de seu conteúdo.
+
+Cada blob em git é identificado por seu hash SHA-1 . Os hashes SHA-1 consistem em 20 bytes, geralmente representados por 40 caracteres em formato hexadecimal.
+
+1.2 Trees
+
+Em git, o equivalente a um diretório é uma árvore. Uma árvore é basicamente uma lista de diretórios, referindo-se a blobs e também a outras árvores. As árvores também são identificadas por seus hashes SHA-1. A referência a esses objetos, seja blobs ou outras árvores, acontece por meio do hash SHA-1 dos objetos.
+
+1.3 Commits
+
+É o que junta tudo, ele aponta para uma árvore, para um parente, um autor... Ele também possui encriptação SHA-1
+
+2. Sistema Distribuído Seguro 
+
+Pelo fato dos commits serem virtualmente impossíveis de serem alterados além da estrutura que o Git mantém de ter o sistema distribuído entre as pessoas envolvidas gera confiança na qualidade do mesmo.
+
+
+Chaves SSH e Tokens
+
+Chave SSH é uma forma de estabelecer uma conexão segura e encriptada entre duas máquinas
+
+Um token de acesso, de forma simplificada, seria uma chave que o usuário utiliza no lugar da senha de sua conta ao executar operações pela linha de comando ou API
+
+
+Iniciando o Git e criando um commit
+1. Iniciar o GIT
+
+Comandos básicos:
+- git init = Iniciar o repositório do GIT 
+
+- git add = Adicionar arquivos, mover eles para dar início ao versionamento (ex: git add strogonoff.md receitas/ irá mover o arquivo md e a pasta receitas para "staged")
+    git add nomeArquivo = adiciona o arquivo com o nome designado
+    git add * = adiciona todos os arquivos no repositório atual, exceto por arquivos que comecem com .
+    git add . = adiciona todos os arquivos dentro do repositório atual
+
+- git commit = criar commit
+    git commit -m "msg" = Faz o commit e adiciona uma mensagem (-m) em forma de texto ("o que estiver dentro das aspas")
+
+- git remote add origin url do repositório remoto = adiciona um repositório remoto. 
+
+- git push origin master + (autenticação) = empurra/envia o repositório local para o repositório remoto.
+
+- git clone + url do github = clona o repositório do repositório remoto de para o repositório local.
+
+- git status = mostra o status (Untracked, Unmodified, Staged...) do arquivo.
+
+- mv = move arquivos (ex: mv strogonoff.md ./receitas/ irá mover o arquivo strogonoff.md para dentro da pasta receitas).
+
+2. Iniciar o versionamento
+
+3. Criar um commit 
+
+Ciclo de vida dos arquivos dentro do Git
+
+git init (além de criar a pasta ".git/" ela inicializa um conceito chamado repositório. Cria o repositório)
+git add (move o arquivo de untracked direto para Staged)
+
+- Untracked: Arquivos que o git não tem o conhecimento. O arquivo Unmodified removido se torna Untracked novamente.
+- Tracked: Arquivos já reconhecidos pelo git.
+- Unmodified: Arquivo que não sofreu modificação ainda.
+- Modified: Arquivo "Unmodified" que sofreu modificação.
+- Staged: É onde ficam os arquivos que estão se preparando pra poder fazer parte de um outro tipo de agrupamento, se preparando para fazer parte de um commit, onde recebem significância e carregam mensagens (autor, data...) e voltam ao estado Unmodified, para começar o ciclo de novo.
+
+
+                          ________________________Tracked________________________________
+                          |                                                             |
+Untracked                 |Unmodified                 Modified                    Staged|
+    |-[adiciona o arquivo]----------------------------------------------------------->| 
+    |                           |-[edita o arquivo]----->|                            |
+    |                           |                        |--[stage o arquivo]-------->|
+    |<--[remove o arquivo]------|                        |                            |
+    |                           |<-------------------------------------------[Commit]-|
+
+
+
+Repositórios:
+
+O Git é um sistema distribuído, então ele vai ter uma versão dele no servidor, que é o GitHub.
+
+- Ambiente de desenvolvimento: Tudo o que está na nossa máquina, onde fica o Repositório de Trabalho e a Staging Area. Os arquivos vão sempre alterar entre o repositório de trabalho e o staging area a medida que você vai adicionando novos arquivos nesse trabalho e modificando arquivos.
+Quando é feito um commit, ele passa a integrar o seu repositório local que pode ser empurrado ao repositório remoto.
+
+- Servidor: 
+
+
+[Servidor]
+    [Remote Repository]
+
+[Ambiente de desenvolvimento]
+    [Working Directory] [Staging Area] [Local Repository]
+                   >git add         >git commit
+
+
+Resolvendo Conflitos 
+
+1. Você baixa/envia o seu código do Github. A versão que está no seu repositório local é a mesma do repositório remoto no Github.
+
+2. Uma outra pessoa faz um git clone (pega o repositório que está no Github e cloná-lo para a sua máquina, para contribuir com o código)
+
+3. Já que ninguém mexeu no código ainda, ambos repositórios estão sincronizados.
+
+4. É certo que em determinado momento as versões de cada usuário serão diferentes devido a edições no código, o que retira a sincronia. O seu código é um, o da outra pessoa é outro e o do repositório remoto do GitHub é outro.
+
+5. Suponhamos que a edição em si ocorra exatamente na mesma linha do código, e é daí que ocorrem os problemas.
+
+6. Agora imagine que essa outra pessoa empurrou seu código para o GiHtub novamente e você continuou editando e trabalhando naquele mesmo arquivo. Agora o código que está no GitHub é o código dessa pessoa e o seu está desatualizado.
+
+7. Quando você submeter o seu código ao GitHub, ele vai dizer: Antes de empurrar o código pra cá, você precisa puxar essa versão que está aqui que outra pessoa alterou e enviou (e que é a versão atual), juntar com o que você trabalhou e empurrar, porque aí sim o código que está na sua máquina vai passar a ser a versão mais recente do código. E é nesse momento que ocorre o conflito de "merge", quando o Github tenta juntar duas alterações e existem duas alterações na mesma linha. O GitHub não irá fazer nenhuma alteração drástica. ele vai deixar que você abra o arquivo, na qual ocorreu alteração na mesma linha e permitir que você resolva manualmente aquele conflito para então empurrar o código pro GitHub, agora sem conflitos, você terá dito qual versão realmente é a versão ccorreta daquela alteração e essa versão será considerada a mais atualizada desse repositório.
+
