@@ -1,7 +1,7 @@
 
 # Repositorio-teste-desafio
 
-Teste para o desafio da DIO sobre repositório
+**Teste para o desafio da DIO sobre repositório**
 
 - Aprender os conceitos básicos do Git e GitHub, tais como seus objetos essenciais, seus status, sua estrutura e etc.
 - Entender como usar o repositório local e sua relação com o repositório remoto.
